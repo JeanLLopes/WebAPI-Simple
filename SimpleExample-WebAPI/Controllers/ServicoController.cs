@@ -69,5 +69,66 @@ namespace SimpleExample_WebAPI.Controllers
             }
         }
 
+
+        public HttpResponseMessage ConsultaCnpj(Int32 dias)
+        {
+            try
+            {
+                List<PedidoMOD> pedidosClientes = _clientesBus.GeraListaPedidos().FindAll(x => x.Status.QuantidadeDias.Equals(dias));
+
+                if (pedidosClientes.Count > 0)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, pedidosClientes);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.NotFound, pedidosClientes);
+
+            }
+            catch (SqlException exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, exception.Message);
+            }
+
+            catch (ApplicationException exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, exception.Message);
+            }
+
+            catch (Exception exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, exception.Message);
+            }
+        }
+
+
+        public HttpResponseMessage ConsultaCnpjDias(String cnpj, Int32 dias)
+        {
+            try
+            {
+                List<PedidoMOD> pedidosClientes = _clientesBus.GeraListaPedidos().FindAll(x => x.Cliente.Cnpj.Equals(cnpj) && x.Status.QuantidadeDias.Equals(dias));
+
+                if (pedidosClientes.Count > 0)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, pedidosClientes);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.NotFound, pedidosClientes);
+
+            }
+            catch (SqlException exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, exception.Message);
+            }
+
+            catch (ApplicationException exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, exception.Message);
+            }
+
+            catch (Exception exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, exception.Message);
+            }
+        }
     }
 }

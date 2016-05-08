@@ -47,8 +47,8 @@ namespace SimpleExample_WebAPI.Controllers
         /// RETORNA A LISTA DE CLIENTES CADASTROS COM FILTRO APLICADO PELO CNPJ
         /// </summary>
         /// <returns>LISTA DE CLIENTES CADASTRADOS COM FILTRO APLICADO PELO CNPJ</returns>
-        [HttpGet]
-        public HttpResponseMessage ConsultaCnpj(String cnpj)
+        [HttpPost]
+        public HttpResponseMessage ConsultaCnpj([FromBody]String cnpj)
         {
             try
             {
@@ -83,8 +83,8 @@ namespace SimpleExample_WebAPI.Controllers
         /// RETORNA A LISTA DE CLIENTES CADASTROS COM FILTRO APLICADO PELA QUANTIDADE DE DIAS DA SOLICITAÇÃO
         /// </summary>
         /// <returns>LISTA DE CLIENTES CADASTRADOS COM FILTRO APLICADO PELA QUANTIDADE DE DIAS DA SOLICITAÇÃO</returns>
-        [HttpGet]
-        public HttpResponseMessage ConsultaCnpj(Int32 dias)
+        [HttpPost]
+        public HttpResponseMessage ConsultaDias([FromBody]Int32 dias)
         {
             try
             {
@@ -119,8 +119,8 @@ namespace SimpleExample_WebAPI.Controllers
         /// RETORNA A LISTA DE CLIENTES CADASTROS COM FILTRO APLICADO PELA QUANTIDADE DE DIAS DA SOLICITAÇÃO E PELO CNPJ
         /// </summary>
         /// <returns>LISTA DE CLIENTES CADASTRADOS COM FILTRO APLICADO PELA QUANTIDADE DE DIAS DA SOLICITAÇÃO E PELO CNPJ</returns>
-        [HttpGet]
-        public HttpResponseMessage ConsultaCnpjDias(String cnpj, Int32 dias)
+        [HttpPost]
+        public HttpResponseMessage ConsultaCnpjDias([FromBody]String cnpj, [FromBody]Int32 dias)
         {
             try
             {

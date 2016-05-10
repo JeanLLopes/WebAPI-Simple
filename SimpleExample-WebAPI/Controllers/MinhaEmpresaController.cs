@@ -9,9 +9,9 @@ namespace SimpleExample_WebAPI.Controllers
     public class MinhaEmpresaController : Controller
     {
         // GET: MinhaEmpresa
-        public ActionResult Index()
-        {
-            return View();
-        }
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
     }
 }

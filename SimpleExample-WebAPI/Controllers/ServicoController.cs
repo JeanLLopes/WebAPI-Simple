@@ -48,11 +48,11 @@ namespace SimpleExample_WebAPI.Controllers
         /// </summary>
         /// <returns>LISTA DE CLIENTES CADASTRADOS COM FILTRO APLICADO PELO CNPJ</returns>
         [HttpPost]
-        public HttpResponseMessage ConsultaCnpj([FromBody]String cnpj)
+        public HttpResponseMessage ConsultaCnpj(ClienteMOD clienteCnpj)
         {
             try
             {
-                List<PedidoMOD> pedidosClientes = _clientesBus.GeraListaPedidos().FindAll(x => x.Cliente.Cnpj.Equals(cnpj));
+                List<PedidoMOD> pedidosClientes = _clientesBus.GeraListaPedidos().FindAll(x => x.Cliente.Cnpj.Equals(clienteCnpj.Cnpj));
 
                 if (pedidosClientes.Count > 0)
                 {
